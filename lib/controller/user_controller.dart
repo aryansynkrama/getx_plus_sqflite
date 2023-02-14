@@ -13,11 +13,11 @@ class UserController extends GetxController {
   void onInit() {
     usernameController = TextEditingController();
     passwordController = TextEditingController();
-    _getData();
+    getData();
     super.onInit();
   }
 
-  void _getData() async {
+  void getData() async {
     DatabaseHelper.instance.getAllRows().then((value) {
       for (var element in value) {
         users.add(User(
@@ -30,6 +30,7 @@ class UserController extends GetxController {
 
   void addData() async {
     await DatabaseHelper.instance.insert(User(
+
         username: usernameController!.text,
         password: passwordController!.text));
     users.insert(
@@ -58,3 +59,16 @@ class UserController extends GetxController {
     }
   }
 }
+
+// void deleteTask(int id) async {
+//   await DatabaseHelper.instance.delete(id);
+//   final int index = users.indexWhere((element) => element.id == id);
+//   if(index >= 0){
+//     users.removeAt(index);
+//     for(int i = index;i<users.length;i++){
+//       users[i] = users[i].copyWith(id: i + 1);
+//       await DatabaseHelper.instance.update(users[i]);
+//     }
+//   }
+//
+// }

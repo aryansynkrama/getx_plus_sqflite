@@ -47,7 +47,7 @@ class DatabaseHelper {
 
   Future<int> insert(User user) async {
     Database db = await instance.database;
-    return await db.insert(table, user.toMap());
+    return await db.insert(table, user.toJson());
   }
 
   Future<int> delete(int id)async{
@@ -57,6 +57,6 @@ class DatabaseHelper {
 
   Future<int> update(User user)async{
     Database db = await instance.database;
-    return await db.update(table, user.toMap(),where: 'id = ?',whereArgs: [user.id]);
+    return await db.update(table, user.toJson(),where: 'id = ?',whereArgs: [user.id]);
   }
 }
