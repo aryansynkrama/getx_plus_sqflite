@@ -39,6 +39,8 @@ dependencies:
   sqflite:
   path_provider:
   freezed_annotation:
+  circular_chart_flutter:
+  charts_flutter_new:
 
 dev_dependencies:
   flutter_test:
